@@ -32,7 +32,15 @@ public class Hero : MonoBehaviour {
         Vector3 pos = transform.position;
         pos.x += xAxis * speed * Time.deltaTime;
         pos.y += yAxis * speed * Time.deltaTime;
-        transform.position = pos;
+        transform.position = pos;   // Можно в самом конце приравнять, после всех махинаций
+
+        bounds.center = transform.position;
+        // Держим корабль на экране
+        Vector3 off = Utils.ScreenBoundsCheck(bounds, BoundsTest.onScreen);
+        if (off != Vector3.zero) {
+            pos -= off;
+            transform.position = pos;
+        }
 
         // Поворачиваем корабль чтобы выглядело покруче
         transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
