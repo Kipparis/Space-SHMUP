@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Используется для теста на границы
+public enum BoundsTest {
+    center,
+    onScreen,
+    offScreen
+}
+
 public class Utils : MonoBehaviour {
 
     //============================= Bounds Functions =============================\\
@@ -43,7 +50,7 @@ public class Utils : MonoBehaviour {
     static public Bounds camBounds {
         get {
             // Если ещё нет _camBounds
-            if(_camBounds.size == Vector3.zero) {
+            if (_camBounds.size == Vector3.zero) {
                 SetCameraBounds();
             }
             return (_camBounds);
@@ -76,5 +83,66 @@ public class Utils : MonoBehaviour {
         _camBounds = new Bounds(center, Vector3.zero);
         _camBounds.Encapsulate(boundTLN);
         _camBounds.Encapsulate(boundBRF);
+    }
+
+    // Проверяет границы внутри границы камеры
+    public static Vector3 ScreenBoundsCheck(Bounds bnd, BoundsTest test = BoundsTest.center) {
+        return (BoundsInBoundsCheck(camBounds, bnd, test));
+    }
+
+    public static Vector3 BoundsInBoundsCheck(Bounds bigB, Bounds lilB, BoundsTest test = BoundsTest.onScreen) {
+        // Центр lilB
+        Vector3 pos = lilB.center;
+
+        // Создаём смещение
+        Vector3 off = Vector3.zero;
+
+        switch (test) {
+            case BoundsTest.center:
+                if (bigB.Contains(pos)) {
+                    return (Vector3.zero);
+                }
+                if (pos.x > bigB.max.x) {
+                    off.x = pos.x - bigB.max.x;
+                } else if (pos.x < bigB.min.x) {
+                    off.x = pos.x - bigB.min.x;
+                }
+                if (pos.y > bigB.max.y) {
+                    off.y = pos.y - bigB.max.y;
+                } else if (pos.y < bigB.min.y) {
+                    off.y = pos.y - bigB.min.y;
+                }
+                if (pos.z > bigB.max.z) {
+                    off.z = pos.z - bigB.max.z;
+                } else if (pos.z < bigB.min.z) {
+                    off.z = pos.z - bigB.min.z;
+                }
+                return (off);
+            // Что нужно сделать, чтобы держать lilB внутри bigB    
+            case BoundsTest.onScreen:
+                if (bigB.Contains(lilB.min) && bigB.Contains(lilB.max)) {
+                   return (Vector3.zero);
+                }
+                if(lilB.max.x > bigB.max.x) {
+                    off.x = lilB.max.x - bigB.max.x;
+                } else if(lilB.min.x < bigB.min.x) {
+                    off.x = lilB.min.x - bigB.min.x;
+                }
+                if (lilB.max.y > bigB.max.y) {
+                    off.y = lilB.max.y - bigB.max.y;
+                } else if (lilB.min.y < bigB.min.y) {
+                    off.y = lilB.min.y - bigB.min.y;
+                }
+                if (lilB.max.z > bigB.max.z) {
+                    off.z = lilB.max.z - bigB.max.z;
+                } else if (lilB.min.z < bigB.min.z) {
+                    off.z = lilB.min.z - bigB.min.z;
+                }
+                return (off);
+            case BoundsTest.offScreen:
+                break;
+            default:
+                break;
+        }
     }
 }
