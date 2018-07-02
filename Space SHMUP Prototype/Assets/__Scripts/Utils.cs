@@ -165,4 +165,37 @@ public class Utils : MonoBehaviour {
                 return (Vector3.zero);
         }
     }
+
+    // ======================Transform Functions=============================\\
+
+    // Находит родителя с каким-то тегом
+    public static GameObject FindTaggedParent(GameObject go) {
+        // Если игровой объект имеет тэг
+        if (go.tag != "Untagged") {
+            return (go);
+        }
+        // Если мы всё проверили и тэга нет возвращаем нуль
+        if (go.transform.parent == null) {
+            return (null);
+        }
+        return (FindTaggedParent(go.transform.parent.gameObject));
+    }
+
+    public static GameObject FindTaggedParent(Transform transform) {
+        return (FindTaggedParent(transform.gameObject));
+    }
+
+    //===================Materials Functions====================\\
+
+    // Возвращает массив всех материалов этого объекта и его детей
+    static public Material[] GetAllMaterials(GameObject go) {
+        List<Material> mats = new List<Material>();
+        if (go.GetComponent<Renderer>() != null) {
+            mats.Add(go.GetComponent<Renderer>().material);
+        }
+        foreach(Transform t in go.transform) {
+            mats.AddRange(GetAllMaterials(t.gameObject));
+        }
+        return (mats.ToArray());
+    }
 }
