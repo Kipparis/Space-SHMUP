@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 23798626324422296}
   - component: {fileID: 102076800402429284}
   - component: {fileID: 54389537545563172}
+  - component: {fileID: 114177701386355798}
   m_Layer: 13
   m_Name: PowerUp
   m_TagString: PowerUp
@@ -199,3 +200,24 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114177701386355798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842960992067020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a72a88851978e548aad42db2465c53a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotMinMax: {x: 15, y: 90}
+  driftMinMax: {x: 0.25, y: 2}
+  lifeTime: 6
+  fadeTime: 4
+  ___________________: 0
+  type: 0
+  cube: {fileID: 0}
+  letter: {fileID: 0}
+  rotPerSecond: {x: 0, y: 0, z: 0}
+  birthTime: 0
