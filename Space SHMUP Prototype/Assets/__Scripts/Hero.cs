@@ -30,7 +30,9 @@ public class Hero : MonoBehaviour {
     void Awake() {
         S = this;
         bounds = Utils.CombineBoundsOfChildren(this.gameObject);
+    }
 
+    void Start() {
         // Возвращает оружие чтобы герой начал с 1 бластером
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);

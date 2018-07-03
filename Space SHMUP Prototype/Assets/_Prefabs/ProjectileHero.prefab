@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23863365030904530}
   - component: {fileID: 65256450839801378}
   - component: {fileID: 54663784547481990}
-  - component: {fileID: 114223513486889116}
+  - component: {fileID: 114563721013889652}
   m_Layer: 11
   m_Name: ProjectileHero
   m_TagString: ProjectileHero
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114223513486889116
+--- !u!114 &114563721013889652
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,9 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1737144180291380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513328b5a650f67489ee8255237026fa, type: 3}
+  m_Script: {fileID: 11500000, guid: fd1e3f1eeabf060499ee0419fd84ea84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsPerSecond: 0.1
-  _________________: 0
-  levelShown: 0
+  _type: 0

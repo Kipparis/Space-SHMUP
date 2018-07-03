@@ -10,6 +10,9 @@ public class Main : MonoBehaviour {
     public float enemySpawnPerSecond = 0.5f;    // Частота
     public float enemySpawnPadding = 1.5f;  // Разброс для позиций
     public WeaponDefinition[] weaponDefinitions;
+    public GameObject prefabPowerUp;
+    public WeaponType[] powerUpFrequency = new WeaponType[] {WeaponType.blaster,
+                                    WeaponType.blaster, WeaponType.spread, WeaponType.shield};
 
     public bool ______________;
 
@@ -68,5 +71,23 @@ public class Main : MonoBehaviour {
 
     public void Restart() {
         Application.LoadLevel("_Scene_0");
+    }
+
+    public void ShipDestroyed(Enemy e) {
+        // Делаем дроп с шансом
+        if(Random.value <= e.powerUpDropChance) {
+            // Выбираем усиление
+            int ndx = Random.Range(0, powerUpFrequency.Length);
+            WeaponType puType = powerUpFrequency[ndx];
+
+            // Создаём улучшение
+            GameObject go = Instantiate(prefabPowerUp) as GameObject;
+            PowerUp pu = go.GetComponent<PowerUp>();
+            // Задаём нужный тип
+            pu.SetType(puType);
+
+            // Задаём позицию от уничтоженного врага
+            pu.transform.position = e.transform.position;
+        }
     }
 }

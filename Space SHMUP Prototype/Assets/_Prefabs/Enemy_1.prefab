@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4607652733746348}
   - component: {fileID: 54640927959785752}
+  - component: {fileID: 114699757270585212}
   m_Layer: 10
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -203,6 +204,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &114699757270585212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167377654140854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41075208c7c32564aad53a0e6aed677c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  fireRate: 0.3
+  health: 10
+  score: 100
+  showDamageForFrames: 2
+  powerUpDropChance: 1
+  _________________: 0
+  originalColors: []
+  materials: []
+  remainingDamageFrames: 0
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  boundsCenterOffset: {x: 0, y: 0, z: 0}
+  waveFrequency: 2
+  waveWidth: 4
+  waveRotY: 25
 --- !u!135 &135300991173552626
 SphereCollider:
   m_ObjectHideFlags: 1

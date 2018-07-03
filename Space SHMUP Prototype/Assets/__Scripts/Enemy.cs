@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public int score = 100; // Сколько очков за разрушение
 
     public int showDamageForFrames = 2; // Кадров чтобы показать урон
+    public float powerUpDropChance = 1f;    // Шанс выпадения улучшения
 
     public bool _________________;
 
@@ -85,6 +86,8 @@ public class Enemy : MonoBehaviour {
                 ShowDamage();
                 health -= Main.W_DEFS[p.type].damageOnHit;
                 if(health <= 0) {
+                    // Сообщаем основному классу что корабль разрушился
+                    Main.S.ShipDestroyed(this);
                     // Уничтожаем врага
                     Destroy(this.gameObject);
                 }
