@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ 
+    -Новые оружия
+    -При разрушении врага щитом выпадает дроп через делай
+    -Увеличить скорость пулемёту
+    -Враги тоже могут получать дропы
+    -Враги могут стрелять
+    -У некоторых врагов будет броня
+    -Кол-во брони зависит от времени игры
+    и ещё чё нибудь на стр 633
+     
+     */
 public class Main : MonoBehaviour {
     static public Main S;
     static public Dictionary<WeaponType, WeaponDefinition> W_DEFS;

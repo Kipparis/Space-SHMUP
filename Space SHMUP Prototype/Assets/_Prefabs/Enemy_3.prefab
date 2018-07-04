@@ -289,6 +289,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dcf85291723b846b2afd498c427adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  fireRate: 0.3
+  health: 10
+  score: 100
+  showDamageForFrames: 2
+  powerUpDropChance: 1
+  _________________: 0
+  originalColors: []
+  materials: []
+  remainingDamageFrames: 0
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  boundsCenterOffset: {x: 0, y: 0, z: 0}
+  points: []
+  birthTime: 0
+  lifeTime: 10
 --- !u!135 &135131152211211580
 SphereCollider:
   m_ObjectHideFlags: 1
